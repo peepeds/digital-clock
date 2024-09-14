@@ -52,7 +52,7 @@ body {
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-    opacity: 1; /* Ubah opacity menjadi 1 agar langsung terlihat */
+    opacity: 1; 
     animation: fadeInText 2s ease-in-out forwards;
 }
 
@@ -120,7 +120,7 @@ body {
         transform: translateY(0);
     }
     to {
-        transform: translateY(-3.5px);
+        transform: translateY(-3px);
     }
 }
 
@@ -148,5 +148,22 @@ body {
 
     .clock_time {
         font-size: 2rem;
+    }
+}
+
+/* Efek tambahan */
+.clock_time div::after {
+    display: inline-block;
+    margin: 0 2px;
+    animation: blink 1s step-start infinite;
+}
+
+.clock_time div:last-child::after {
+    content: '';
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
     }
 }
