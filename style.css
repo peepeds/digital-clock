@@ -30,8 +30,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 300px;
-    animation: scaleUp 1s ease-in-out;
-    transition: box-shadow 0.3s ease-in-out;
+    animation: scaleUp 1s ease-in-out, pulse 60s infinite;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 @keyframes scaleUp {
@@ -43,8 +43,19 @@ body {
     }
 }
 
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
 .container:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    background-color: #f7f7f7;
 }
 
 .day {
@@ -53,7 +64,23 @@ body {
     color: #333;
     margin-bottom: 10px;
     opacity: 1; 
-    animation: fadeInText 2s ease-in-out forwards;
+    animation: slideInFromLeft 1s ease-in-out;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.day:hover {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .clock_time {
@@ -85,12 +112,12 @@ body {
     text-align: center;
     backface-visibility: hidden;
     display: block;
-    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); /* Lebih smooth */
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), filter 0.8s ease-in-out;
 }
 
 .flip-clock .top,
 .flip-clock .bottom {
-    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); /* Efek transisi smooth */
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .flip-clock .top {
@@ -119,6 +146,7 @@ body {
     }
     100% {
         transform: rotateX(-90deg);
+        
     }
 }
 
@@ -128,25 +156,7 @@ body {
     }
     100% {
         transform: rotateX(0deg);
-    }
-}
-
-
-@keyframes flipTop {
-    0% {
-        transform: rotateX(0deg);
-    }
-    100% {
-        transform: rotateX(-90deg);
-    }
-}
-
-@keyframes flipBottom {
-    0% {
-        transform: rotateX(90deg);
-    }
-    100% {
-        transform: rotateX(0deg);
+        
     }
 }
 
@@ -154,13 +164,26 @@ body {
     font-size: 1.2rem;
     color: #555;
     opacity: 1;
-    animation: fadeInText 2s ease-in-out forwards;
-    transition: color 0.3s ease-in-out;
+    animation: slideInFromRight 1s ease-in-out;
+    transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .date:hover {
     color: #333;
+    opacity: 0.85;
 }
+
 
 @media (max-width: 500px) {
     .container {
