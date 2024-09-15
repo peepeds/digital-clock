@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Digital Clock</title>
 </head>
+
 <body>
     <div class="container">
         <div class="day">
             <div id="day"></div>
         </div>
+
         <div class="clock_time">
-            <div id="hour"></div>
-            <div id="min"></div>
-            <div id="sec"></div>
+            <div id="hour" class="flip-clock">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
+
+            <div id="min" class="flip-clock">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
+
+            <div id="sec" class="flip-clock">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
         </div>
+
         <div class="date">
             <div id="date"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
